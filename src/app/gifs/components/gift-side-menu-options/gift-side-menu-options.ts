@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { GifService } from '../../services/gifs.service';
 
 interface MenuOptions {
   icon: string;
@@ -8,12 +9,18 @@ interface MenuOptions {
   subLabel: string;
 }
 
+// interface MenuOptionsHistory {
+//   icon: string;
+//   title: string;
+// }
+
 @Component({
   selector: 'gift-side-menu-options',
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './gift-side-menu-options.html',
 })
 export class GiftSideMenuOptions {
+  gifService = inject(GifService);
   menuOptions: MenuOptions[] = [
     {
       icon: 'fa-solid fa-chart-line',
@@ -28,4 +35,11 @@ export class GiftSideMenuOptions {
       route: '/dashboard/search',
     },
   ];
+
+  // MenuOptionsHistory: MenuOptionsHistory[] = [
+  //   {
+  //     icon: '',
+  //     title:
+  //   }
+  // ]
 }
